@@ -1,0 +1,84 @@
+// Test Data for TC-N002: Invalid Email Format Rejection
+// Purpose: To provide invalid email formats and expected error messages for negative testing of contact creation
+[
+  {
+    "testCaseId": "TC-N002",
+    "description": "Missing '@' symbol",
+    "input": {
+      "email": "invalidemail.com"
+    },
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Missing domain",
+    "input": {
+      "email": "user@"
+    },
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Missing username",
+    "input": {
+      "email": "@domain.com"
+    },
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Multiple '@' symbols",
+    "input": {
+      "email": "user@@domain.com"
+    },
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "No domain extension",
+    "input": {
+      "email": "user@domain"
+    },
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Space in email",
+    "input": {
+      "email": "user name@domain.com"
+    },
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Special characters not allowed",
+    "input": {
+      "email": "user!@domain.com"
+    },
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Empty email field",
+    "input": {
+      "email": ""
+    },
+    "expectedError": "Email is required."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email starts with dot",
+    "input": {
+      "email": ".user@domain.com"
+    },
+    "expectedError": "Please enter a valid email address."
+  },
+  {
+    "testCaseId": "TC-N002",
+    "description": "Email ends with dot",
+    "input": {
+      "email": "user.@domain.com"
+    },
+    "expectedError": "Please enter a valid email address."
+  }
+]
