@@ -1,0 +1,87 @@
+{
+  "test_case_id": "TC00002_Diary_NPB",
+  "test_case_name": "New patient booking",
+  "description": "Diary_ New patient booking",
+  "preconditions": "User should be logged in on the diary screen.",
+  "priority": "Medium",
+  "type": "Functional",
+  "test_data": [
+    {
+      "test_name": "TC_NPB_ValidBooking",
+      "description": "Valid new patient booking with all required fields filled.",
+      "patient_first_name": "John",
+      "patient_last_name": "Doe",
+      "patient_dob": "1990-01-01",
+      "patient_gender": "Male",
+      "contact_number": "5551234567",
+      "email": "john.doe@example.com",
+      "booking_date": "2025-12-01",
+      "booking_time": "10:00",
+      "diary": "Dr. Smith",
+      "expected_result": "Booking created and reflected in diary with Black 'A'-icon."
+    },
+    {
+      "test_name": "TC_NPB_MissingRequiredFields",
+      "description": "Attempt booking with missing required fields (no first name).",
+      "patient_first_name": "",
+      "patient_last_name": "Doe",
+      "patient_dob": "1990-01-01",
+      "patient_gender": "Male",
+      "contact_number": "5551234567",
+      "email": "john.doe@example.com",
+      "booking_date": "2025-12-01",
+      "booking_time": "10:30",
+      "diary": "Dr. Smith",
+      "expected_result": "No booking created; error message displayed for missing required fields."
+    },
+    {
+      "test_name": "TC_NPB_BoundaryTimeSlot",
+      "description": "Booking at the earliest available time slot.",
+      "patient_first_name": "Alice",
+      "patient_last_name": "Brown",
+      "patient_dob": "1985-05-15",
+      "patient_gender": "Female",
+      "contact_number": "5559876543",
+      "email": "alice.brown@example.com",
+      "booking_date": "2025-12-01",
+      "booking_time": "08:00",
+      "diary": "Dr. Smith",
+      "expected_result": "Booking created at earliest slot with Black 'A'-icon."
+    },
+    {
+      "test_name": "TC_NPB_BoundaryDate",
+      "description": "Booking on the farthest allowed future date.",
+      "patient_first_name": "Bob",
+      "patient_last_name": "Green",
+      "patient_dob": "1970-11-30",
+      "patient_gender": "Male",
+      "contact_number": "5551112222",
+      "email": "bob.green@example.com",
+      "booking_date": "2026-12-31",
+      "booking_time": "15:30",
+      "diary": "Dr. Smith",
+      "expected_result": "Booking created on boundary date with Black 'A'-icon."
+    },
+    {
+      "test_name": "TC_NPB_CloseWithoutSaving",
+      "description": "User closes booking screen without saving.",
+      "patient_first_name": "Carol",
+      "patient_last_name": "White",
+      "patient_dob": "1995-07-20",
+      "patient_gender": "Female",
+      "contact_number": "5553334444",
+      "email": "carol.white@example.com",
+      "booking_date": "2025-12-01",
+      "booking_time": "11:00",
+      "diary": "Dr. Smith",
+      "expected_result": "No booking created; diary remains unchanged."
+    }
+  ],
+  "locators": [
+    "diary_screen",
+    "new_booking_button",
+    "patient_details_form",
+    "save_button",
+    "booking_slot"
+  ]
+}
