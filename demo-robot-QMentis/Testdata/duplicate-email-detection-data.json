@@ -1,0 +1,56 @@
+{
+  "testCaseId": "TC-N003",
+  "testCaseName": "Duplicate Email Detection",
+  "description": "Ensure system prevents creation of contacts with duplicate emails and displays error message.",
+  "preconditions": [
+    "User is logged into the CRM system.",
+    "A contact with the email 'test@example.com' already exists."
+  ],
+  "priority": "Medium",
+  "type": "Negative",
+  "testData": [
+    {
+      "scenario": "Attempt to create a new contact with an email that already exists in the system.",
+      "input": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "test@example.com",
+        "company": "Acme Corp",
+        "phone": "1234567890"
+      },
+      "expectedResult": "System displays an error message indicating the email is already in use.",
+      "postCondition": "No duplicate contact is saved in the CRM system."
+    },
+    {
+      "scenario": "Edge Case: Attempt to create a new contact with the same email but different letter case.",
+      "input": {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "email": "TEST@example.com",
+        "company": "Beta LLC",
+        "phone": "0987654321"
+      },
+      "expectedResult": "System displays an error message indicating the email is already in use (case-insensitive check).",
+      "postCondition": "No duplicate contact is saved in the CRM system."
+    },
+    {
+      "scenario": "Edge Case: Attempt to create a new contact with leading/trailing spaces in the email.",
+      "input": {
+        "firstName": "Alice",
+        "lastName": "Johnson",
+        "email": " test@example.com ",
+        "company": "Gamma Inc",
+        "phone": "5551234567"
+      },
+      "expectedResult": "System displays an error message indicating the email is already in use (ignoring spaces).",
+      "postCondition": "No duplicate contact is saved in the CRM system."
+    }
+  ],
+  "locators": [
+    "input#firstName",
+    "input#lastName",
+    "input#email",
+    "input#company",
+    "input#phone"
+  ]
+}
